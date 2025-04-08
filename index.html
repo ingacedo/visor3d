@@ -1,85 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visor 3D</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       font-family: 'Oswald', sans-serif;
-      background-color: white;
+      background: #fff;
+      overflow: hidden;
     }
+
     .visor-container {
       position: relative;
       width: 100%;
+      height: 100vh;
       overflow: hidden;
     }
-    .iframe-wrapper {
-      padding-bottom: 75%; /* relación 4:3 aprox. */
-      height: 0;
-      position: relative;
+
+    #iframe {
+      border: none;
     }
-    iframe {
+
+    .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .iframe-wrapper iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: none;
     }
-    .overlay {
+
+    #overlay {
       position: absolute;
       top: 10%;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #D9D9D9;
-      color: black;
-      font-size: 14px;
-      padding: 15px 20px;
-      border-radius: 12px;
-      border: 2px solid #002060;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.85);
       z-index: 10;
       text-align: center;
+      padding: 15px;
+      font-size: 16px;
+      color: black;
       cursor: pointer;
-      max-width: 300px; /* Máximo ancho controlado */
+      border-radius: 10px;
+      pointer-events: auto;
     }
   </style>
 </head>
 <body>
   <div class="visor-container">
-    <!-- Overlay -->
-    <div id="overlay" class="overlay">
-      Dale play y navegá libremente por el visor 3D.<br>
-      Usá el mouse o los dedos para moverte.
-    </div>
-
-    <!-- Visor Sketchfab -->
     <div class="iframe-wrapper">
-      <iframe id="visor3D" src="https://sketchfab.com/models/d333f803597a49d4b4303a30effc8613/embed"
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        allowfullscreen mozallowfullscreen webkitallowfullscreen>
-      </iframe>
+      <iframe
+        id="iframe"
+        src="https://3dwarehouse.sketchup.com/embed/299ddfa3-bf99-4c0a-9983-f761e21d073b?token=r90MLWRUM6E=&binaryName=s21&captures=20"
+        allowfullscreen
+      ></iframe>
+      <div id="overlay" onclick="this.style.display='none'">
+        Dale play y navegá libremente por el visor 3D.<br />
+        Usá el mouse o los dedos para moverte.
+      </div>
     </div>
   </div>
-
-  <script>
-    // Detecta cuando se hace click en el visor
-    const iframe = document.getElementById('visor3D');
-    const overlay = document.getElementById('overlay');
-
-    iframe.addEventListener('load', () => {
-      window.addEventListener('blur', () => {
-        overlay.style.display = 'none';
-      });
-    });
-
-    overlay.addEventListener('click', () => {
-      overlay.style.display = 'none';
-    });
-  </script>
 </body>
 </html>
