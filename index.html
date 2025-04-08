@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visor 3D</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="iframe-wrapper">
+      <iframe
+        id="iframe"
+        src="https://3dwarehouse.sketchup.com/embed/299ddfa3-bf99-4c0a-9983-f761e21d073b?token=r90MLWRUM6E=&binaryName=s21&captures=20"
+        allowfullscreen
+      ></iframe>
+      <div id="overlay" onclick="hideOverlay()">
+        Dale play y navegá libremente por el visor 3D.<br />
+        Usá el mouse o los dedos para moverte.
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
